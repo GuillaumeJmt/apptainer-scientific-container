@@ -1,0 +1,24 @@
+Bootstrap: docker
+From: python:3.11-slim
+
+%post
+    pip install numpy scipy pandas matplotlib mpi4py
+
+%environment
+    export LC_ALL=C
+    export PATH=/usr/local/bin:$PATH
+
+%runscript
+    python3 "$@"
+
+%labels
+    Author GuillaumeJmt
+    Version 1.0
+    Description Scientific Python container for HPC
+
+%help
+    Scientific Python container with numpy, scipy, pandas, matplotlib, mpi4py.
+    
+    Usage:
+        apptainer run scientific-python.sif script.py
+        apptainer exec scientific-python.sif python3 -c "import numpy; print(numpy.__version__)"
