@@ -4,7 +4,7 @@
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=4G
 #SBATCH --time=00:10:00
-#SBATCH --output=/home/guillaumelumin.guest/apptainer_%j.out
+#SBATCH --output=apptainer_%j.out
 
 # Load container and run scientific calculation
 apptainer exec ~/scientific-python.sif python3 - << 'PYEOF'
