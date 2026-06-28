@@ -16,7 +16,7 @@ One container = one portable .sif file that works on any Linux cluster.
 
 | File | Base | Packages |
 |------|------|---------|
-| containers/scientific-python.def | python:3.11-slim | numpy, scipy, pandas, matplotlib, mpi4py |
+| containers/scientific-python.def | python:3.11-slim | numpy, scipy, pandas, matplotlib |
 
 ## Usage
 
@@ -48,3 +48,7 @@ Use with Slurm (see examples/):
 
 - Apptainer installed on Ubuntu 24.04 ARM64 (Lima VM on Apple M1)
 - Container tested with numpy 2.4.6, scipy 1.17.1, pandas 3.0.3
+
+**Note on MPI:** mpi4py is intentionally not bundled. Installing it inside a slim image
+fails (no MPI library/compiler). The correct HPC pattern is to bind-mount the host MPI
+(hybrid model) for interconnect ABI compatibility.

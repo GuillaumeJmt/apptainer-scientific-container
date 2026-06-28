@@ -2,7 +2,7 @@ Bootstrap: docker
 From: python:3.11-slim
 
 %post
-    pip install numpy scipy pandas matplotlib mpi4py
+    pip install --no-cache-dir numpy scipy pandas matplotlib
 
 %environment
     export LC_ALL=C
@@ -17,8 +17,7 @@ From: python:3.11-slim
     Description Scientific Python container for HPC
 
 %help
-    Scientific Python container with numpy, scipy, pandas, matplotlib, mpi4py.
-    
-    Usage:
-        apptainer run scientific-python.sif script.py
-        apptainer exec scientific-python.sif python3 -c "import numpy; print(numpy.__version__)"
+    Scientific Python container: numpy, scipy, pandas, matplotlib.
+    MPI is intentionally not bundled: installing mpi4py inside a slim image fails
+    (no MPI library/compiler), and the correct HPC pattern is to bind-mount the
+    host MPI (hybrid model) for interconnect ABI compatibility.
