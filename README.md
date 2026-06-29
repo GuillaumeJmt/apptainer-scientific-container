@@ -1,6 +1,6 @@
 # Apptainer Scientific Containers
 
-HPC-ready container definitions for scientific Python workflows.
+Container definitions for scientific Python workflows, for HPC use.
 Built with Apptainer (formerly Singularity) - no root daemon required.
 
 ## Why Apptainer and not Docker
